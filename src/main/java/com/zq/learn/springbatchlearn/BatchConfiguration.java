@@ -73,7 +73,7 @@ public class BatchConfiguration {
         return new ListItemWriter<>();
     }
 
-    @Bean
+    //@Bean
     public JdbcBatchItemWriter<ParsedItem> writer() {
         JdbcBatchItemWriter<ParsedItem> writer = new CustomerJdbcBatchItemWriter<ParsedItem>() {
             @Override

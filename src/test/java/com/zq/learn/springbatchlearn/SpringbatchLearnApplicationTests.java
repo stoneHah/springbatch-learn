@@ -24,30 +24,30 @@ import java.util.Map;
 @SpringBootTest
 public class SpringbatchLearnApplicationTests {
 
-	@Autowired
-	private JobLauncher jobLauncher;
+    @Autowired
+    private JobLauncher jobLauncher;
 
-	@Autowired
-	@Qualifier("importUserJob")
-	private Job job;
+    @Autowired
+    @Qualifier("importUserJob")
+    private Job job;
 
-	@Test
-	public void contextLoads() throws JobParametersInvalidException, JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException {
-		jobLauncher.run(job, newExecution());
-	}
+    @Test
+    public void contextLoads() {
 
-	@Test
-	public void runJob(){
+    }
 
-	}
+    @Test
+    public void runJob() throws Exception {
+        jobLauncher.run(job, newExecution());
+    }
 
-	private JobParameters newExecution() {
-		Map<String, JobParameter> parameters = new HashMap<>();
+    private JobParameters newExecution() {
+        Map<String, JobParameter> parameters = new HashMap<>();
 
-		JobParameter parameter = new JobParameter(new Date());
-		parameters.put("currentTime", parameter);
+        JobParameter parameter = new JobParameter(new Date());
+        parameters.put("currentTime", parameter);
 
-		return new JobParameters(parameters);
-	}
+        return new JobParameters(parameters);
+    }
 
 }
